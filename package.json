@@ -12,7 +12,8 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "postbuild": "echo www.maetrixs.com > dist/CNAME",
+    "deploy": "npm run build && gh-pages -d dist"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
