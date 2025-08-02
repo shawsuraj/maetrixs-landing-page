@@ -42,12 +42,22 @@ export const Hero = () => {
 
       <div className="relative z-10 container mx-auto px-6 text-center">
         {/* Logo */}
-        <div className="flex justify-center mb-8 animate-fade-in-up">
-          <img 
-            src={maetrixsLogo} 
-            alt="MaetriXs Logo" 
-            className="w-20 h-20 animate-float neon-glow rounded-xl"
-          />
+        <div className="flex flex-col items-center mb-8 animate-fade-in-up">
+          <div className="relative group">
+            <img 
+              src={maetrixsLogo} 
+              alt="MaetriXs Logo" 
+              className="w-24 h-24 md:w-28 md:h-28 object-contain transition-all duration-500 group-hover:scale-105 neon-glow rounded-2xl"
+              style={{
+                filter: 'drop-shadow(0 0 20px rgba(59, 130, 246, 0.3))',
+                animation: 'float 3s ease-in-out infinite'
+              }}
+            />
+            <div className="absolute inset-0 bg-gradient-primary/10 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+          </div>
+          <div className="mt-4 text-sm md:text-base text-muted-foreground font-medium tracking-wide">
+            The Social Fitness Tracker
+          </div>
         </div>
 
         {/* Badge */}

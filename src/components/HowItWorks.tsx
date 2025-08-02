@@ -56,136 +56,74 @@ export const HowItWorks = () => {
             to Social Mastery
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Transform your social life with a system so simple, 
-            you'll wonder how you ever networked without it.
+            Track → Reflect → Grow
           </p>
         </div>
 
-        {/* Steps */}
-        <div className="space-y-16">
+        {/* Horizontal Steps */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
           {steps.map((step, index) => (
-            <div key={step.number} className="relative">
-              {/* Connection Line */}
+            <div 
+              key={step.number}
+              className="relative group"
+              style={{ 
+                animationDelay: `${index * 0.2}s`,
+                animation: 'fade-in-up 0.6s ease-out forwards'
+              }}
+            >
+              {/* Connection Arrow */}
               {index < steps.length - 1 && (
-                <div className="absolute left-8 top-32 w-0.5 h-16 bg-gradient-to-b from-matrix-border to-transparent z-0 hidden lg:block" />
+                <div className="hidden md:flex absolute -right-4 top-1/2 transform -translate-y-1/2 z-10">
+                  <ArrowRight className="w-6 h-6 text-neon-blue/50" />
+                </div>
               )}
-              
-              <div className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${index % 2 === 1 ? 'lg:grid-flow-dense' : ''}`}>
-                {/* Content */}
-                <div 
-                  className={`space-y-6 ${index % 2 === 1 ? 'lg:col-start-2' : ''}`}
-                  style={{ 
-                    animationDelay: `${index * 0.2}s`,
-                    animation: 'fade-in-up 0.6s ease-out forwards'
-                  }}
-                >
-                  <div className="flex items-center gap-4 mb-6">
-                    <div className={`inline-flex p-4 rounded-xl ${step.bgColor} relative z-10`}>
-                      <step.icon className={`w-8 h-8 ${step.color}`} />
-                    </div>
-                    <div className="text-6xl font-bold text-matrix-border/30">
-                      {step.number}
-                    </div>
+
+              <Card className="card-elevated border-matrix-border p-6 text-center h-full group-hover:scale-105 transition-all duration-300">
+                <CardContent className="p-0 space-y-4">
+                  {/* Icon */}
+                  <div className={`inline-flex p-4 rounded-xl ${step.bgColor} mx-auto`}>
+                    <step.icon className={`w-8 h-8 ${step.color}`} />
                   </div>
 
-                  <h3 className="text-3xl font-bold text-foreground">
+                  {/* Step Number */}
+                  <div className="text-4xl font-bold text-matrix-border/30">
+                    {step.number}
+                  </div>
+
+                  {/* Title */}
+                  <h3 className="text-xl font-bold text-foreground">
                     {step.title}
                   </h3>
                   
-                  <p className="text-lg text-muted-foreground leading-relaxed">
+                  {/* Description */}
+                  <p className="text-sm text-muted-foreground leading-relaxed">
                     {step.description}
                   </p>
 
-                  <ul className="space-y-3">
-                    {step.features.map((feature, featureIndex) => (
-                      <li key={featureIndex} className="flex items-center gap-3">
-                        <Zap className={`w-4 h-4 ${step.color}`} />
-                        <span className="text-foreground">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* Illustration/Visual */}
-                <div 
-                  className={`${index % 2 === 1 ? 'lg:col-start-1 lg:row-start-1' : ''}`}
-                  style={{ 
-                    animationDelay: `${index * 0.2 + 0.1}s`,
-                    animation: 'fade-in-up 0.6s ease-out forwards'
-                  }}
-                >
-                  <Card className="card-elevated border-matrix-border p-12 relative overflow-hidden">
-                    <CardContent className="p-0">
-                      {/* Mock interface visualization */}
-                      <div className="aspect-square bg-gradient-card rounded-xl border border-matrix-border p-8 relative">
-                        <div className="absolute inset-0 bg-gradient-to-br from-transparent via-matrix-border/5 to-transparent" />
-                        
-                        {/* Step-specific visual content */}
-                        {step.number === "01" && (
-                          <div className="space-y-4">
-                            <div className="flex items-center gap-3 p-3 bg-matrix-surface rounded-lg">
-                              <div className="w-12 h-12 bg-neon-blue/20 rounded-full flex items-center justify-center">
-                                <UserPlus className="w-6 h-6 text-neon-blue" />
-                              </div>
-                              <div>
-                                <div className="h-3 bg-neon-blue/30 rounded w-20 mb-1" />
-                                <div className="h-2 bg-matrix-border rounded w-16" />
-                              </div>
-                            </div>
-                            <div className="grid grid-cols-2 gap-2">
-                              {Array.from({ length: 4 }).map((_, i) => (
-                                <div key={i} className="h-8 bg-matrix-border/30 rounded animate-pulse" />
-                              ))}
-                            </div>
-                          </div>
-                        )}
-
-                        {step.number === "02" && (
-                          <div className="space-y-4">
-                            <div className="grid grid-cols-3 gap-3">
-                              {Array.from({ length: 6 }).map((_, i) => (
-                                <div key={i} className="aspect-square bg-neon-magenta/20 rounded-lg p-2">
-                                  <div className="w-full h-full bg-neon-magenta/40 rounded" />
-                                </div>
-                              ))}
-                            </div>
-                            <div className="flex gap-2">
-                              <div className="flex-1 h-2 bg-neon-magenta/40 rounded" />
-                              <div className="flex-1 h-2 bg-matrix-border/30 rounded" />
-                              <div className="flex-1 h-2 bg-matrix-border/30 rounded" />
-                            </div>
-                          </div>
-                        )}
-
-                        {step.number === "03" && (
-                          <div className="space-y-4">
-                            <div className="text-center">
-                              <div className="text-4xl font-bold text-accent mb-2">Level 12</div>
-                              <div className="h-3 bg-matrix-border rounded-full overflow-hidden">
-                                <div className="h-full bg-accent rounded-full w-3/4" />
-                              </div>
-                            </div>
-                            <div className="grid grid-cols-2 gap-3">
-                              {Array.from({ length: 4 }).map((_, i) => (
-                                <div key={i} className="flex items-center gap-2 p-2 bg-accent/10 rounded">
-                                  <div className="w-6 h-6 bg-accent/40 rounded" />
-                                  <div className="h-2 bg-accent/30 rounded flex-1" />
-                                </div>
-                              ))}
-                            </div>
-                          </div>
-                        )}
+                  {/* Key Features */}
+                  <div className="space-y-2 pt-2">
+                    {step.features.slice(0, 2).map((feature, featureIndex) => (
+                      <div key={featureIndex} className="flex items-center justify-center gap-2 text-xs text-muted-foreground">
+                        <Zap className={`w-3 h-3 ${step.color}`} />
+                        <span>{feature}</span>
                       </div>
-                    </CardContent>
-                  </Card>
-                </div>
-              </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
             </div>
           ))}
         </div>
 
+        {/* Progress Bar */}
+        <div className="flex justify-center mb-12">
+          <div className="w-full max-w-md bg-matrix-border rounded-full h-2 overflow-hidden">
+            <div className="h-full bg-gradient-primary rounded-full w-0 animate-[progress_2s_ease-out_forwards]" />
+          </div>
+        </div>
+
         {/* CTA */}
-        <div className="text-center mt-16">
+        <div className="text-center">
           <Button 
             size="lg" 
             className="px-8 py-4 text-lg neon-glow bg-gradient-primary hover:shadow-elevation transition-all duration-300 group"

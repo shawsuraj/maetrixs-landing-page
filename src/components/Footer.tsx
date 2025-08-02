@@ -12,27 +12,27 @@ import maetrixsLogo from '@/assets/maetrixs-logo.png';
 
 const socialLinks = [
   {
-    name: "Twitter",
+    name: "X",
     icon: Twitter,
-    href: "#",
+    href: "https://x.com/materixs",
     color: "hover:text-blue-400"
   },
   {
     name: "Instagram", 
     icon: Instagram,
-    href: "#",
+    href: "https://instagram.com/maetrixs.app",
     color: "hover:text-pink-400"
   },
   {
     name: "LinkedIn",
     icon: Linkedin,
-    href: "#",
+    href: "https://www.linkedin.com/company/maetrixs",
     color: "hover:text-blue-500"
   },
   {
     name: "Email",
     icon: Mail,
-    href: "mailto:hello@maetrixs.com",
+    href: "mailto:founder@maetrixs.com",
     color: "hover:text-neon-blue"
   }
 ];

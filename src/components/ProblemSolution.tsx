@@ -1,5 +1,6 @@
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { Link } from 'react-router-dom';
 import { 
   AlertTriangle, 
   Target, 
@@ -8,7 +9,11 @@ import {
   Brain,
   TrendingUp,
   Globe,
-  Smartphone
+  Smartphone,
+  ArrowRight,
+  UserPlus,
+  Briefcase,
+  Palette
 } from 'lucide-react';
 
 const problemCards = [
@@ -58,19 +63,36 @@ const marketSegments = [
     icon: Users,
     title: "Gen Z & Students",
     description: "High social activity, event-driven lifestyle",
-    color: "text-neon-blue"
+    color: "text-neon-blue",
+    link: "/students"
   },
   {
     icon: Globe,
-    title: "Travelers & Nomads",
+    title: "Travelers & Nomads", 
     description: "Constant new connections around the world",
-    color: "text-neon-magenta"
+    color: "text-neon-magenta",
+    link: "/travelers"
   },
   {
-    icon: Target,
-    title: "Entrepreneurs",
+    icon: UserPlus,
+    title: "Party & Social",
+    description: "Turn parties into meaningful connections",
+    color: "text-accent",
+    link: "/party"
+  },
+  {
+    icon: Briefcase,
+    title: "Professionals",
     description: "Strategic networking for business growth",
-    color: "text-accent"
+    color: "text-neon-blue",
+    link: "/professionals"
+  },
+  {
+    icon: Palette,
+    title: "Creators",
+    description: "Build networks with fellow creators",
+    color: "text-neon-magenta",
+    link: "/creators"
   }
 ];
 
@@ -98,7 +120,7 @@ export const ProblemSolution = () => {
             {problemCards.map((card, index) => (
               <Card 
                 key={card.title}
-                className="glass-card-interactive card-elevated border-red-400/20 interactive-card"
+                className="card-elevated border-red-400/20 interactive-card"
                 style={{ 
                   animationDelay: `${index * 0.2}s`,
                   animation: 'fade-in-up 0.6s ease-out forwards'
@@ -136,7 +158,7 @@ export const ProblemSolution = () => {
             {solutionCards.map((card, index) => (
               <Card 
                 key={card.title}
-                className="glass-card-interactive card-elevated border-matrix-border interactive-card neon-glow"
+                className="card-elevated border-matrix-border interactive-card neon-glow"
                 style={{ 
                   animationDelay: `${index * 0.2}s`,
                   animation: 'fade-in-up 0.6s ease-out forwards'
@@ -170,24 +192,34 @@ export const ProblemSolution = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {marketSegments.map((segment, index) => (
-              <Card 
+              <Link
                 key={segment.title}
-                className="glass-card-interactive card-elevated border-matrix-border interactive-card"
-                style={{ 
-                  animationDelay: `${index * 0.2}s`,
-                  animation: 'fade-in-up 0.6s ease-out forwards'
-                }}
+                to={segment.link}
+                className="group block"
               >
-                <CardContent className="p-8 text-center">
-                  <div className={`inline-flex p-4 rounded-xl bg-accent/10 mb-6`}>
-                    <segment.icon className={`w-8 h-8 ${segment.color}`} />
-                  </div>
-                  <h3 className="text-xl font-semibold mb-3">{segment.title}</h3>
-                  <p className="text-muted-foreground">{segment.description}</p>
-                </CardContent>
-              </Card>
+                <Card 
+                  className="card-elevated border-matrix-border interactive-card group-hover:border-accent/50 transition-all duration-300 group-hover:shadow-elevation h-full"
+                  style={{ 
+                    animationDelay: `${index * 0.1}s`,
+                    animation: 'fade-in-up 0.6s ease-out forwards'
+                  }}
+                >
+                  <CardContent className="p-6 text-center h-full flex flex-col justify-between">
+                    <div>
+                      <div className={`inline-flex p-3 rounded-xl bg-accent/10 mb-4 group-hover:bg-accent/20 transition-colors`}>
+                        <segment.icon className={`w-6 h-6 ${segment.color} group-hover:scale-110 transition-transform`} />
+                      </div>
+                      <h3 className="text-lg font-semibold mb-2 group-hover:text-accent transition-colors">{segment.title}</h3>
+                      <p className="text-sm text-muted-foreground mb-4">{segment.description}</p>
+                    </div>
+                    <div className="flex items-center justify-center text-xs text-accent opacity-0 group-hover:opacity-100 transition-opacity">
+                      Learn More <ArrowRight className="w-3 h-3 ml-1 group-hover:translate-x-1 transition-transform" />
+                    </div>
+                  </CardContent>
+                </Card>
+              </Link>
             ))}
           </div>
         </div>
