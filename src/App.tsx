@@ -4,6 +4,9 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, HashRouter } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
+import ReactGA from 'react-ga4';
+import GAListener from "./components/GAListener";
+
 import Index from "./pages/Index";
 import Students from "./pages/Students";
 import Travelers from "./pages/Travelers";
@@ -15,12 +18,17 @@ import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
 
+// Google analytics
+const MEASUREMENT_ID = "G-ZFR0ZM7PB8";
+ReactGA.initialize(MEASUREMENT_ID);
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <Toaster />
       <Sonner />
       <ScrollToTop>
+      <GAListener />
       <Routes>
         <Route path="/" element={<Index />} />
           <Route path="/students" element={<Students />} />
