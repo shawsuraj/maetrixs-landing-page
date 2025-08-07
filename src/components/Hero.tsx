@@ -44,16 +44,32 @@ export const Hero = () => {
         {/* Logo */}
         <div className="flex flex-col items-center mb-8 animate-fade-in-up">
           <div className="relative group">
-            <img 
-              src={maetrixsLogo} 
-              alt="MaetriXs Logo" 
-              className="w-24 h-24 md:w-28 md:h-28 object-contain transition-all duration-500 group-hover:scale-105 neon-glow rounded-2xl"
-              style={{
-                filter: 'drop-shadow(0 0 20px rgba(59, 130, 246, 0.3))',
-                animation: 'float 3s ease-in-out infinite'
-              }}
-            />
+            {/* Englarge */}
+            <div className="transition-all duration-500 group-hover:scale-110 group-hover:shadow-2xl group-hover:shadow-purple-500/30"> 
+              <img 
+                src={maetrixsLogo} 
+                alt="MaetriXs Logo" 
+                className="w-24 h-24 md:w-28 md:h-28 object-contain transition-all duration-500 group-hover:scale-105 neon-glow rounded-2xl"
+                style={{
+                  filter: 'drop-shadow(0 0 20px rgba(59, 130, 246, 0.3))',
+                  animation: 'float 3s ease-in-out infinite'
+                }}
+              />
+            </div>
             <div className="absolute inset-0 bg-gradient-primary/10 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            
+            {/* Animated glow rings */}
+            <div className="absolute inset-0 bg-gradient-to-r from-purple-500/30 to-cyan-500/30 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-all duration-700 -z-10 group-hover:scale-125" />
+            <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 rounded-3xl blur-2xl opacity-0 group-hover:opacity-70 transition-all duration-1000 -z-20 group-hover:scale-150" />
+            
+            {/* Floating particles */}
+            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+              <div className="absolute top-4 left-4 w-1 h-1 bg-purple-400 rounded-full animate-ping" style={{ animationDelay: '0.2s' }} />
+              <div className="absolute top-8 right-6 w-1 h-1 bg-cyan-400 rounded-full animate-ping" style={{ animationDelay: '0.4s' }} />
+              <div className="absolute bottom-6 left-8 w-1 h-1 bg-purple-400 rounded-full animate-ping" style={{ animationDelay: '0.6s' }} />
+              <div className="absolute bottom-4 right-4 w-1 h-1 bg-cyan-400 rounded-full animate-ping" style={{ animationDelay: '0.8s' }} />
+            </div>
+
           </div>
           <div className="mt-4 text-sm md:text-base text-muted-foreground font-medium tracking-wide">
             The Social Fitness Tracker

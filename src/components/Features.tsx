@@ -82,7 +82,7 @@ export const Features = () => {
           {features.map((feature, index) => (
             <Card 
               key={feature.title}
-              className="glass-card-interactive card-elevated border-matrix-border"
+              className="card-elevated border-matrix-border interactive-card"
               style={{ 
                 animationDelay: `${index * 0.1}s`,
                 animation: 'fade-in-up 0.6s ease-out forwards'

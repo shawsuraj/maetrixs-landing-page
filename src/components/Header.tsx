@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import maetrixsLogo from '@/assets/maetrixs-logo.png';
 
 interface HeaderProps {
@@ -7,14 +8,21 @@ interface HeaderProps {
 }
 
 export const Header = ({ title, subtitle }: HeaderProps) => {
+  
+  const navigate = useNavigate();
+
   return (
     <header className="fixed top-0 left-0 right-0 z-40 bg-background/95 backdrop-blur-xl border-b border-border/30">
       <div className="container mx-auto px-6 py-3">
         <div className="flex items-center justify-center relative">
           {/* Logo - Left side */}
-          <Link 
+          {/* <Link 
             to="/" 
             className="absolute left-0 flex items-center space-x-2 group transition-all duration-300 hover:scale-105"
+          > */}
+          <button
+          onClick={() => navigate(-1)}
+          className="absolute left-0 flex items-center space-x-2 group transition-transform duration-300 hover:scale-105"
           >
             <img 
               src={maetrixsLogo} 
@@ -27,7 +35,8 @@ export const Header = ({ title, subtitle }: HeaderProps) => {
             <div>
               <h1 className="text-lg font-bold gradient-text">MaetriXs</h1>
             </div>
-          </Link>
+          </button>
+          {/* </Link> */}
           
           {/* Title - Center */}
           <div className="text-center max-w-xs">

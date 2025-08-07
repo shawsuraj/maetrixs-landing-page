@@ -1,7 +1,7 @@
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { 
-  Twitter, 
+  X, 
   Instagram, 
   Linkedin, 
   Mail,
@@ -13,7 +13,7 @@ import maetrixsLogo from '@/assets/maetrixs-logo.png';
 const socialLinks = [
   {
     name: "X",
-    icon: Twitter,
+    icon: X,
     href: "https://x.com/materixs",
     color: "hover:text-blue-400"
   },
